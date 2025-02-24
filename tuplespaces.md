@@ -239,10 +239,14 @@ Para todos os comandos, caso não ocorra nenhum erro, os processos cliente devem
 
 No caso em que um comando origina algum erro do lado do servidor, esse erro deve ser transmitido ao cliente usando os mecanismos do gRPC para tratamento de erros (no caso do Java, encapsulados em exceções). Nessas situações, quando o cliente recebe uma exceção após uma invocação remota, este deve simplesmente imprimir uma mensagem que descreva o erro correspondente.
 
-Os programas de ambos os tipos de clientes recebem como argumentos o nome da máquina e porto onde o _front-end_ do TupleSpace (ou, na etapa 1.1, o servidor TupleSpaces) pode ser encontrado, assim como o *client-id* (ver etapa B.2). Por exemplo:
+Os programas de ambos os tipos de clientes recebem como argumentos o nome da máquina e porto onde o _front-end_ do TupleSpace (ou, na etapa 1.1, o servidor TupleSpaces) pode ser encontrado, assim como o *client-id* (ver etapa B.2). Por exemplo, o cliente Java pode ser lançado assim:
 
 `$ mvn exec:java -Dexec.args="localhost:2001 1"`
 
+
+e o cliente Python pode ser lançado assim:
+
+`$ python3 client_main.py localhost:2001 1`
 
 Para a etapa 2.2 (operação _take_), os programas cliente devem receber como argumento um identificador de cliente
 (um inteiro que se pressupõe único entre processos cliente).
@@ -250,8 +254,6 @@ Para a etapa 2.2 (operação _take_), os programas cliente devem receber como ar
 Existe um comando para cada operação do serviço: `put`, `read`, `take` e `getTupleSpacesState`. 
 Os 3 primeiros recebem 
 Uma *string*, delimitada por `<` e `>` e sem conter qualquer espaço entre esses símbolos, que define um tuplo ou, no caso dos comandos `read` e `take`, uma expressão regular (usando a sintaxe das expressões regulares em Java) que especifica o padrão de tuplos pretendidos.
-
-*Nota: a partir da etapa B.2, a operação `take` passa a exigir um tuplo concreto (portanto, já não deve aceitar expressões regulares).*
 
 Um exemplo:
 
@@ -278,9 +280,6 @@ Existem também dois comandos adicionais, que não resultam em invocações remo
 -  `sleep`, que bloqueia o cliente pelo número de segundos passado como único argumento.
 
 -  `exit`, que termina o cliente.
-
-Os comandos `setdelay` e `sleep` poderão ser úteis para depurar o comportamento dos algoritmos distribuídos
-construídos nas diferentes etapas do projeto, especialmente nas mais avançadas.
 
 
 
