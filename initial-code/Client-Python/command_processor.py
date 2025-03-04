@@ -44,7 +44,9 @@ class CommandProcessor:
 
         # get the tuple
         tuple_data = split[1]
-        print("TODO: implement put command")
+
+        self.client_service.operation_put(tuple_data)
+        # print("TODO: implement put command")
 
     def read(self, split: List[str]):
         # check if the input is valid
@@ -54,7 +56,10 @@ class CommandProcessor:
 
         # get the tuple
         tuple_data = split[1]
-        print("TODO: implement read command")
+
+        self.client_service.operation_read(tuple_data)
+
+        # print("TODO: implement read command")
 
     def take(self, split: List[str]):
         # check if the input is valid
@@ -64,10 +69,15 @@ class CommandProcessor:
 
         # get the tuple
         tuple_data = split[1]
-        print("TODO: implement take command")
+        
+        self.client_service.operation_take(tuple_data)
+
+        # print("TODO: implement take command")
 
     def get_tuple_spaces_state(self):
-        print("TODO: implement getTupleSpacesState command")
+        self.client_service.operation_get_tuple_spaces_state()
+
+        # print("TODO: implement getTupleSpacesState command")
 
     def print_usage(self):
         print("Usage:\n"
@@ -85,3 +95,4 @@ class CommandProcessor:
                 or len(input_data) > 2):
             return False
         return True
+    
