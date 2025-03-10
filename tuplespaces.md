@@ -88,7 +88,7 @@ No entanto, no projeto só testaremos o caso de um *front-end*.
 ### Objetivo B
 
 Desenvolver uma solução alternativa em que o serviço é replicado, **em três servidores**.
-Nesta solução, o cliente utilizador precisará recorrer a *non-blocking stubs* do gRPC.
+Nesta solução, o *front-end* precisará recorrer a *non-blocking stubs* do gRPC.
 
 A interface remota (ficheiro `.proto`) dos servidores replicados não é fornecida no código base.
 Cada grupo deve compor essa interface remota. Recomendamos que seja uma adaptação do `TupleSpaces.proto` fornecido pelos docentes. Serão penalizadas interfaces que divirjam desnecessariamente do `TupleSpaces.proto`.
@@ -99,14 +99,14 @@ Cada grupo deve compor essa interface remota. Recomendamos que seja uma adaptaç
 Desenvolver as operações _read_ e _put_ (não suportando, para já, a operação _take_), 
 seguindo o algoritmo de Xu e Liskov (citado acima).
 Resumidamente, quando um cliente pretende invocar uma dessas operações, 
-começa por enviar o pedido a todos os servidores e depois aguarda pelas 
+o *front-end* começa por enviar o pedido a todos os servidores e depois aguarda pelas 
 respostas (de um servidor, no caso de _read_, ou de todos os servidores, no caso de _put_).
 
 Para permitir depurar o funcionamento do sistema replicado, deve também ser permitido que o cliente, quando invoca uma operação replicada (*read*, *put* e, mais tarde, *take*), possa opcionalmente
 especificar um atraso (em segundos) que cada réplica que recebe o pedido deve 
 esperar antes de o executar.
 O atraso associado a cada pedido deve ser enviado como *gRPC metdata* no pedido ao *front-end* e 
-pelos pedidos que este envia às réplicas.
+pelos pedidos que o *front-end* envia às réplicas.
 
 #### Etapa B.2
 
@@ -161,6 +161,9 @@ Otimizar a solução composta na etapa B.2, tentando reduzir o número de mensag
 Sugestão: ver a discussão na secção 4.2 do artigo de Xu e Liskov.
 
 
+Para submissão da solução para as etapas C.1 e/ou C.2, além do código da solução, é também exigido que 
+cada grupo submeta um documento com um máximo de 2 páginas a descrever o desenho da solução.
+O formato desse documento será disponibilizado no site dos laboratórios.
 
 
 ## 3 Faseamento da execução do projeto
@@ -294,7 +297,7 @@ Todos os processos devem poder ser lançados com uma opção "-debug". Se esta o
 ### Modelo de Interação, Faltas e Segurança
 
 
-Deve assumir-se que nem os servidores nem os clientes podem falhar. 
+Deve assumir-se que nem os servidores, nem os *front-ends*, nem os clientes podem falhar. 
 Deve também assumir-se que as ligações TCP (usadas pelo gRPC) tratam situações de perda, reordenação ou duplicação de mensagens.  
 No entanto, as mensagens podem atrasar-se arbitrariamente, logo o sistema é assíncrono. 
 
