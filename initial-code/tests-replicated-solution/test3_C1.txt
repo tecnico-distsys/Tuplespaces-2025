@@ -1,0 +1,5 @@
+put <t>
+put <t>
+sleep 3
+take <t> 0 0 5
+exit

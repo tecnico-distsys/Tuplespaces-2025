@@ -1,0 +1,3 @@
+read <t>
+take <t>
+exit

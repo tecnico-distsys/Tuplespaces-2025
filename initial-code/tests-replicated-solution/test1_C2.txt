@@ -1,0 +1,4 @@
+read <(.*)>
+take <t1>
+take <t2>
+exit
