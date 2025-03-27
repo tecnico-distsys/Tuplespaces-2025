@@ -163,7 +163,7 @@ Sugestão: ver a discussão na secção 4.2 do artigo de Xu e Liskov.
 
 Para submissão da solução para as etapas C.1 e/ou C.2, além do código da solução, é também exigido que 
 cada grupo submeta um documento com um máximo de 2 páginas a descrever o desenho da solução.
-O formato desse documento será disponibilizado no site dos laboratórios.
+O formato desse documento encontra-se disponível [aqui](https://github.com/tecnico-distsys/Tuplespaces-2025/blob/master/OrientacoesRelatorioFinalSD.md).
 
 
 ## 3 Faseamento da execução do projeto
