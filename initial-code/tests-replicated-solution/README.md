@@ -8,7 +8,8 @@ Ao contrário da 1ª bateria de testes, estes testes não são avaliados automat
 
 - test1: Testa cenário em que um cliente invoca `read` e `take` sobre tuplos que ainda não estão disponíveis, logo é obrigado a esperar.
 - test2: Testa `read` e `take` invocados quando só uma das réplicas tem o tuplo alvo; o `read` deve responder imediatamente mas o `take` deve esperar até que todas as réplicas tenham o tuplo.
-- test3: Testa invocações concorrentes de `take` que competem pelo mesmo tuplo. Devido aos atrasos que o teste introduz, o cliente C1 deve ser o primeiro a conseguir obter a exclusão mútua do seu *voter set*; consequentemente, o cliente C2 precisará esperar até que o C1 liberte a exclusão mútua.
+- test3: Um tuplo apenas, que serve como trinco (mutex). Dois clientes competem para o obter. Devido aos atrasos que o teste introduz, o cliente C1 deve ser o primeiro a conseguir obter o tuplo, obrigando o cliente C2 a esperar. Finalmente, o C1 devolve o tuplo e permite que o C2 faça progresso.
+- test4 (anterior test3): Testa invocações concorrentes de `take` que competem pelo mesmo tuplo. Devido aos atrasos que o teste introduz, o cliente C1 deve ser o primeiro a conseguir obter a exclusão mútua do seu *voter set*; consequentemente, o cliente C2 precisará esperar até que o C1 liberte a exclusão mútua.
 - E outros que o grupo queira inventar!...
 
 ## Instruções:
